@@ -1,0 +1,16 @@
+# 所有环境共用配置
+spring:
+  application:
+    name: mall-demo
+
+  profiles:
+    active: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

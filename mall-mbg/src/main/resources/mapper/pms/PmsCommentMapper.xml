@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.pms.PmsCommentMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.pms.PmsComment">
+        <!--@mbg.generated-->
+        <!--@Table pms_comment-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="product_name" jdbcType="VARCHAR" property="productName"/>
+        <result column="member_nick_name" jdbcType="VARCHAR" property="memberNickName"/>
+        <result column="member_icon" jdbcType="VARCHAR" property="memberIcon"/>
+        <result column="product_attribute" jdbcType="VARCHAR" property="productAttribute"/>
+        <result column="star" jdbcType="INTEGER" property="star"/>
+        <result column="member_ip" jdbcType="VARCHAR" property="memberIp"/>
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+        <result column="pics" jdbcType="VARCHAR" property="pics"/>
+        <result column="read_count" jdbcType="INTEGER" property="readCount"/>
+        <result column="collect_count" jdbcType="INTEGER" property="collectCount"/>
+        <result column="replay_count" jdbcType="INTEGER" property="replayCount"/>
+        <result column="show_status" jdbcType="INTEGER" property="showStatus"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, product_id, product_name, member_nick_name, member_icon, product_attribute, star,
+        member_ip, content, pics, read_count, collect_count, replay_count, show_status, create_time,
+        update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from pms_comment
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from pms_comment
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsComment"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_comment (product_id, product_name, member_nick_name,
+                                 member_icon, product_attribute, star,
+                                 member_ip, content, pics,
+                                 read_count, collect_count, replay_count,
+                                 show_status, create_time, update_time)
+        values (#{productId,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR}, #{memberNickName,jdbcType=VARCHAR},
+                #{memberIcon,jdbcType=VARCHAR}, #{productAttribute,jdbcType=VARCHAR}, #{star,jdbcType=INTEGER},
+                #{memberIp,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, #{pics,jdbcType=VARCHAR},
+                #{readCount,jdbcType=INTEGER}, #{collectCount,jdbcType=INTEGER}, #{replayCount,jdbcType=INTEGER},
+                #{showStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsComment" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="productName != null and productName != ''">
+                product_name,
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                member_nick_name,
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                member_icon,
+            </if>
+            <if test="productAttribute != null and productAttribute != ''">
+                product_attribute,
+            </if>
+            <if test="star != null">
+                star,
+            </if>
+            <if test="memberIp != null and memberIp != ''">
+                member_ip,
+            </if>
+            <if test="content != null and content != ''">
+                content,
+            </if>
+            <if test="pics != null and pics != ''">
+                pics,
+            </if>
+            <if test="readCount != null">
+                read_count,
+            </if>
+            <if test="collectCount != null">
+                collect_count,
+            </if>
+            <if test="replayCount != null">
+                replay_count,
+            </if>
+            <if test="showStatus != null">
+                show_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="productName != null and productName != ''">
+                #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                #{memberNickName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                #{memberIcon,jdbcType=VARCHAR},
+            </if>
+            <if test="productAttribute != null and productAttribute != ''">
+                #{productAttribute,jdbcType=VARCHAR},
+            </if>
+            <if test="star != null">
+                #{star,jdbcType=INTEGER},
+            </if>
+            <if test="memberIp != null and memberIp != ''">
+                #{memberIp,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null and content != ''">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="pics != null and pics != ''">
+                #{pics,jdbcType=VARCHAR},
+            </if>
+            <if test="readCount != null">
+                #{readCount,jdbcType=INTEGER},
+            </if>
+            <if test="collectCount != null">
+                #{collectCount,jdbcType=INTEGER},
+            </if>
+            <if test="replayCount != null">
+                #{replayCount,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsComment">
+        <!--@mbg.generated-->
+        update pms_comment
+        <set>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="productName != null and productName != ''">
+                product_name = #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                member_nick_name = #{memberNickName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                member_icon = #{memberIcon,jdbcType=VARCHAR},
+            </if>
+            <if test="productAttribute != null and productAttribute != ''">
+                product_attribute = #{productAttribute,jdbcType=VARCHAR},
+            </if>
+            <if test="star != null">
+                star = #{star,jdbcType=INTEGER},
+            </if>
+            <if test="memberIp != null and memberIp != ''">
+                member_ip = #{memberIp,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="pics != null and pics != ''">
+                pics = #{pics,jdbcType=VARCHAR},
+            </if>
+            <if test="readCount != null">
+                read_count = #{readCount,jdbcType=INTEGER},
+            </if>
+            <if test="collectCount != null">
+                collect_count = #{collectCount,jdbcType=INTEGER},
+            </if>
+            <if test="replayCount != null">
+                replay_count = #{replayCount,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                show_status = #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsComment">
+        <!--@mbg.generated-->
+        update pms_comment
+        set product_id        = #{productId,jdbcType=BIGINT},
+            product_name      = #{productName,jdbcType=VARCHAR},
+            member_nick_name  = #{memberNickName,jdbcType=VARCHAR},
+            member_icon       = #{memberIcon,jdbcType=VARCHAR},
+            product_attribute = #{productAttribute,jdbcType=VARCHAR},
+            star              = #{star,jdbcType=INTEGER},
+            member_ip         = #{memberIp,jdbcType=VARCHAR},
+            content           = #{content,jdbcType=LONGVARCHAR},
+            pics              = #{pics,jdbcType=VARCHAR},
+            read_count        = #{readCount,jdbcType=INTEGER},
+            collect_count     = #{collectCount,jdbcType=INTEGER},
+            replay_count      = #{replayCount,jdbcType=INTEGER},
+            show_status       = #{showStatus,jdbcType=INTEGER},
+            create_time       = #{createTime,jdbcType=TIMESTAMP},
+            update_time       = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_comment
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="product_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.productName,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="member_nick_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberNickName,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="member_icon = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberIcon,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="product_attribute = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.productAttribute,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="star = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.star,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="member_ip = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberIp,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="content = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.content,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="pics = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.pics,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="read_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.readCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="collect_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.collectCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="replay_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.replayCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="show_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.showStatus,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_comment
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productId != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="product_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productName != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.productName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="member_nick_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberNickName != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberNickName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="member_icon = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberIcon != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberIcon,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="product_attribute = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productAttribute != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.productAttribute,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="star = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.star != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.star,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="member_ip = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberIp != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberIp,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="content = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.content != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.content,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="pics = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.pics != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.pics,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="read_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.readCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.readCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="collect_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.collectCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.collectCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="replay_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.replayCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.replayCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="show_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.showStatus != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.showStatus,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_comment
+                (product_id, product_name, member_nick_name, member_icon, product_attribute, star,
+                 member_ip, content, pics, read_count, collect_count, replay_count, show_status,
+                 create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.productId,jdbcType=BIGINT}, #{item.productName,jdbcType=VARCHAR},
+             #{item.memberNickName,jdbcType=VARCHAR},
+             #{item.memberIcon,jdbcType=VARCHAR}, #{item.productAttribute,jdbcType=VARCHAR},
+             #{item.star,jdbcType=INTEGER}, #{item.memberIp,jdbcType=VARCHAR}, #{item.content,jdbcType=LONGVARCHAR},
+             #{item.pics,jdbcType=VARCHAR}, #{item.readCount,jdbcType=INTEGER}, #{item.collectCount,jdbcType=INTEGER},
+             #{item.replayCount,jdbcType=INTEGER}, #{item.showStatus,jdbcType=INTEGER},
+             #{item.createTime,jdbcType=TIMESTAMP},
+             #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsComment" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            product_id,
+            product_name,
+            member_nick_name,
+            member_icon,
+            product_attribute,
+            star,
+            member_ip,
+            content,
+            pics,
+            read_count,
+            collect_count,
+            replay_count,
+            show_status,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{productId,jdbcType=BIGINT},
+            #{productName,jdbcType=VARCHAR},
+            #{memberNickName,jdbcType=VARCHAR},
+            #{memberIcon,jdbcType=VARCHAR},
+            #{productAttribute,jdbcType=VARCHAR},
+            #{star,jdbcType=INTEGER},
+            #{memberIp,jdbcType=VARCHAR},
+            #{content,jdbcType=LONGVARCHAR},
+            #{pics,jdbcType=VARCHAR},
+            #{readCount,jdbcType=INTEGER},
+            #{collectCount,jdbcType=INTEGER},
+            #{replayCount,jdbcType=INTEGER},
+            #{showStatus,jdbcType=INTEGER},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            product_id        = #{productId,jdbcType=BIGINT},
+            product_name      = #{productName,jdbcType=VARCHAR},
+            member_nick_name  = #{memberNickName,jdbcType=VARCHAR},
+            member_icon       = #{memberIcon,jdbcType=VARCHAR},
+            product_attribute = #{productAttribute,jdbcType=VARCHAR},
+            star              = #{star,jdbcType=INTEGER},
+            member_ip         = #{memberIp,jdbcType=VARCHAR},
+            content           = #{content,jdbcType=LONGVARCHAR},
+            pics              = #{pics,jdbcType=VARCHAR},
+            read_count        = #{readCount,jdbcType=INTEGER},
+            collect_count     = #{collectCount,jdbcType=INTEGER},
+            replay_count      = #{replayCount,jdbcType=INTEGER},
+            show_status       = #{showStatus,jdbcType=INTEGER},
+            create_time       = #{createTime,jdbcType=TIMESTAMP},
+            update_time       = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsComment" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="productName != null and productName != ''">
+                product_name,
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                member_nick_name,
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                member_icon,
+            </if>
+            <if test="productAttribute != null and productAttribute != ''">
+                product_attribute,
+            </if>
+            <if test="star != null">
+                star,
+            </if>
+            <if test="memberIp != null and memberIp != ''">
+                member_ip,
+            </if>
+            <if test="content != null and content != ''">
+                content,
+            </if>
+            <if test="pics != null and pics != ''">
+                pics,
+            </if>
+            <if test="readCount != null">
+                read_count,
+            </if>
+            <if test="collectCount != null">
+                collect_count,
+            </if>
+            <if test="replayCount != null">
+                replay_count,
+            </if>
+            <if test="showStatus != null">
+                show_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="productName != null and productName != ''">
+                #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                #{memberNickName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                #{memberIcon,jdbcType=VARCHAR},
+            </if>
+            <if test="productAttribute != null and productAttribute != ''">
+                #{productAttribute,jdbcType=VARCHAR},
+            </if>
+            <if test="star != null">
+                #{star,jdbcType=INTEGER},
+            </if>
+            <if test="memberIp != null and memberIp != ''">
+                #{memberIp,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null and content != ''">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="pics != null and pics != ''">
+                #{pics,jdbcType=VARCHAR},
+            </if>
+            <if test="readCount != null">
+                #{readCount,jdbcType=INTEGER},
+            </if>
+            <if test="collectCount != null">
+                #{collectCount,jdbcType=INTEGER},
+            </if>
+            <if test="replayCount != null">
+                #{replayCount,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="productName != null and productName != ''">
+                product_name = #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberNickName != null and memberNickName != ''">
+                member_nick_name = #{memberNickName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberIcon != null and memberIcon != ''">
+                member_icon = #{memberIcon,jdbcType=VARCHAR},
+            </if>
+            <if test="productAttribute != null and productAttribute != ''">
+                product_attribute = #{productAttribute,jdbcType=VARCHAR},
+            </if>
+            <if test="star != null">
+                star = #{star,jdbcType=INTEGER},
+            </if>
+            <if test="memberIp != null and memberIp != ''">
+                member_ip = #{memberIp,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="pics != null and pics != ''">
+                pics = #{pics,jdbcType=VARCHAR},
+            </if>
+            <if test="readCount != null">
+                read_count = #{readCount,jdbcType=INTEGER},
+            </if>
+            <if test="collectCount != null">
+                collect_count = #{collectCount,jdbcType=INTEGER},
+            </if>
+            <if test="replayCount != null">
+                replay_count = #{replayCount,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                show_status = #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

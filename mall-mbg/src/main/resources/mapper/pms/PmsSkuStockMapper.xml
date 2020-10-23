@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.pms.PmsSkuStockMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.pms.PmsSkuStock">
+        <!--@mbg.generated-->
+        <!--@Table pms_sku_stock-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="sku_code" jdbcType="VARCHAR" property="skuCode"/>
+        <result column="pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="promotion_price" jdbcType="DECIMAL" property="promotionPrice"/>
+        <result column="stock" jdbcType="INTEGER" property="stock"/>
+        <result column="low_stock" jdbcType="INTEGER" property="lowStock"/>
+        <result column="lock_stock" jdbcType="INTEGER" property="lockStock"/>
+        <result column="sale" jdbcType="INTEGER" property="sale"/>
+        <result column="sp1" jdbcType="VARCHAR" property="sp1"/>
+        <result column="sp2" jdbcType="VARCHAR" property="sp2"/>
+        <result column="sp3" jdbcType="VARCHAR" property="sp3"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, product_id, sku_code, pic, price, promotion_price, stock, low_stock, lock_stock,
+        sale, sp1, sp2, sp3, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from pms_sku_stock
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from pms_sku_stock
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsSkuStock"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_sku_stock (product_id, sku_code, pic,
+                                   price, promotion_price, stock,
+                                   low_stock, lock_stock, sale,
+                                   sp1, sp2, sp3, create_time,
+                                   update_time)
+        values (#{productId,jdbcType=BIGINT}, #{skuCode,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR},
+                #{price,jdbcType=DECIMAL}, #{promotionPrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER},
+                #{lowStock,jdbcType=INTEGER}, #{lockStock,jdbcType=INTEGER}, #{sale,jdbcType=INTEGER},
+                #{sp1,jdbcType=VARCHAR}, #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsSkuStock" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_sku_stock
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="skuCode != null and skuCode != ''">
+                sku_code,
+            </if>
+            <if test="pic != null and pic != ''">
+                pic,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="promotionPrice != null">
+                promotion_price,
+            </if>
+            <if test="stock != null">
+                stock,
+            </if>
+            <if test="lowStock != null">
+                low_stock,
+            </if>
+            <if test="lockStock != null">
+                lock_stock,
+            </if>
+            <if test="sale != null">
+                sale,
+            </if>
+            <if test="sp1 != null and sp1 != ''">
+                sp1,
+            </if>
+            <if test="sp2 != null and sp2 != ''">
+                sp2,
+            </if>
+            <if test="sp3 != null and sp3 != ''">
+                sp3,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="skuCode != null and skuCode != ''">
+                #{skuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null and pic != ''">
+                #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="promotionPrice != null">
+                #{promotionPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="stock != null">
+                #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="lowStock != null">
+                #{lowStock,jdbcType=INTEGER},
+            </if>
+            <if test="lockStock != null">
+                #{lockStock,jdbcType=INTEGER},
+            </if>
+            <if test="sale != null">
+                #{sale,jdbcType=INTEGER},
+            </if>
+            <if test="sp1 != null and sp1 != ''">
+                #{sp1,jdbcType=VARCHAR},
+            </if>
+            <if test="sp2 != null and sp2 != ''">
+                #{sp2,jdbcType=VARCHAR},
+            </if>
+            <if test="sp3 != null and sp3 != ''">
+                #{sp3,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsSkuStock">
+        <!--@mbg.generated-->
+        update pms_sku_stock
+        <set>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="skuCode != null and skuCode != ''">
+                sku_code = #{skuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null and pic != ''">
+                pic = #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="promotionPrice != null">
+                promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="stock != null">
+                stock = #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="lowStock != null">
+                low_stock = #{lowStock,jdbcType=INTEGER},
+            </if>
+            <if test="lockStock != null">
+                lock_stock = #{lockStock,jdbcType=INTEGER},
+            </if>
+            <if test="sale != null">
+                sale = #{sale,jdbcType=INTEGER},
+            </if>
+            <if test="sp1 != null and sp1 != ''">
+                sp1 = #{sp1,jdbcType=VARCHAR},
+            </if>
+            <if test="sp2 != null and sp2 != ''">
+                sp2 = #{sp2,jdbcType=VARCHAR},
+            </if>
+            <if test="sp3 != null and sp3 != ''">
+                sp3 = #{sp3,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsSkuStock">
+        <!--@mbg.generated-->
+        update pms_sku_stock
+        set product_id      = #{productId,jdbcType=BIGINT},
+            sku_code        = #{skuCode,jdbcType=VARCHAR},
+            pic             = #{pic,jdbcType=VARCHAR},
+            price           = #{price,jdbcType=DECIMAL},
+            promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+            stock           = #{stock,jdbcType=INTEGER},
+            low_stock       = #{lowStock,jdbcType=INTEGER},
+            lock_stock      = #{lockStock,jdbcType=INTEGER},
+            sale            = #{sale,jdbcType=INTEGER},
+            sp1             = #{sp1,jdbcType=VARCHAR},
+            sp2             = #{sp2,jdbcType=VARCHAR},
+            sp3             = #{sp3,jdbcType=VARCHAR},
+            create_time     = #{createTime,jdbcType=TIMESTAMP},
+            update_time     = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_sku_stock
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="sku_code = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.skuCode,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="pic = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.pic,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.price,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="promotion_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.promotionPrice,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="stock = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.stock,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="low_stock = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.lowStock,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="lock_stock = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.lockStock,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="sale = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.sale,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="sp1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.sp1,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="sp2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.sp2,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="sp3 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.sp3,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_sku_stock
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productId != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="sku_code = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.skuCode != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.skuCode,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="pic = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.pic != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.pic,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.price != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.price,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="promotion_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.promotionPrice != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.promotionPrice,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="stock = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.stock != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.stock,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="low_stock = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.lowStock != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.lowStock,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="lock_stock = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.lockStock != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.lockStock,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="sale = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sale != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.sale,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="sp1 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sp1 != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.sp1,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="sp2 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sp2 != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.sp2,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="sp3 = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sp3 != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.sp3,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_sku_stock
+                (product_id, sku_code, pic, price, promotion_price, stock, low_stock, lock_stock,
+                 sale, sp1, sp2, sp3, create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.productId,jdbcType=BIGINT}, #{item.skuCode,jdbcType=VARCHAR}, #{item.pic,jdbcType=VARCHAR},
+             #{item.price,jdbcType=DECIMAL}, #{item.promotionPrice,jdbcType=DECIMAL}, #{item.stock,jdbcType=INTEGER},
+             #{item.lowStock,jdbcType=INTEGER}, #{item.lockStock,jdbcType=INTEGER}, #{item.sale,jdbcType=INTEGER},
+             #{item.sp1,jdbcType=VARCHAR}, #{item.sp2,jdbcType=VARCHAR}, #{item.sp3,jdbcType=VARCHAR},
+             #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsSkuStock" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_sku_stock
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            product_id,
+            sku_code,
+            pic,
+            price,
+            promotion_price,
+            stock,
+            low_stock,
+            lock_stock,
+            sale,
+            sp1,
+            sp2,
+            sp3,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{productId,jdbcType=BIGINT},
+            #{skuCode,jdbcType=VARCHAR},
+            #{pic,jdbcType=VARCHAR},
+            #{price,jdbcType=DECIMAL},
+            #{promotionPrice,jdbcType=DECIMAL},
+            #{stock,jdbcType=INTEGER},
+            #{lowStock,jdbcType=INTEGER},
+            #{lockStock,jdbcType=INTEGER},
+            #{sale,jdbcType=INTEGER},
+            #{sp1,jdbcType=VARCHAR},
+            #{sp2,jdbcType=VARCHAR},
+            #{sp3,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            product_id      = #{productId,jdbcType=BIGINT},
+            sku_code        = #{skuCode,jdbcType=VARCHAR},
+            pic             = #{pic,jdbcType=VARCHAR},
+            price           = #{price,jdbcType=DECIMAL},
+            promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+            stock           = #{stock,jdbcType=INTEGER},
+            low_stock       = #{lowStock,jdbcType=INTEGER},
+            lock_stock      = #{lockStock,jdbcType=INTEGER},
+            sale            = #{sale,jdbcType=INTEGER},
+            sp1             = #{sp1,jdbcType=VARCHAR},
+            sp2             = #{sp2,jdbcType=VARCHAR},
+            sp3             = #{sp3,jdbcType=VARCHAR},
+            create_time     = #{createTime,jdbcType=TIMESTAMP},
+            update_time     = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsSkuStock" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_sku_stock
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="skuCode != null and skuCode != ''">
+                sku_code,
+            </if>
+            <if test="pic != null and pic != ''">
+                pic,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="promotionPrice != null">
+                promotion_price,
+            </if>
+            <if test="stock != null">
+                stock,
+            </if>
+            <if test="lowStock != null">
+                low_stock,
+            </if>
+            <if test="lockStock != null">
+                lock_stock,
+            </if>
+            <if test="sale != null">
+                sale,
+            </if>
+            <if test="sp1 != null and sp1 != ''">
+                sp1,
+            </if>
+            <if test="sp2 != null and sp2 != ''">
+                sp2,
+            </if>
+            <if test="sp3 != null and sp3 != ''">
+                sp3,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="skuCode != null and skuCode != ''">
+                #{skuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null and pic != ''">
+                #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="promotionPrice != null">
+                #{promotionPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="stock != null">
+                #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="lowStock != null">
+                #{lowStock,jdbcType=INTEGER},
+            </if>
+            <if test="lockStock != null">
+                #{lockStock,jdbcType=INTEGER},
+            </if>
+            <if test="sale != null">
+                #{sale,jdbcType=INTEGER},
+            </if>
+            <if test="sp1 != null and sp1 != ''">
+                #{sp1,jdbcType=VARCHAR},
+            </if>
+            <if test="sp2 != null and sp2 != ''">
+                #{sp2,jdbcType=VARCHAR},
+            </if>
+            <if test="sp3 != null and sp3 != ''">
+                #{sp3,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="skuCode != null and skuCode != ''">
+                sku_code = #{skuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null and pic != ''">
+                pic = #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="promotionPrice != null">
+                promotion_price = #{promotionPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="stock != null">
+                stock = #{stock,jdbcType=INTEGER},
+            </if>
+            <if test="lowStock != null">
+                low_stock = #{lowStock,jdbcType=INTEGER},
+            </if>
+            <if test="lockStock != null">
+                lock_stock = #{lockStock,jdbcType=INTEGER},
+            </if>
+            <if test="sale != null">
+                sale = #{sale,jdbcType=INTEGER},
+            </if>
+            <if test="sp1 != null and sp1 != ''">
+                sp1 = #{sp1,jdbcType=VARCHAR},
+            </if>
+            <if test="sp2 != null and sp2 != ''">
+                sp2 = #{sp2,jdbcType=VARCHAR},
+            </if>
+            <if test="sp3 != null and sp3 != ''">
+                sp3 = #{sp3,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

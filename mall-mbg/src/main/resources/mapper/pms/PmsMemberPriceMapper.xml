@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.pms.PmsMemberPriceMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.pms.PmsMemberPrice">
+        <!--@mbg.generated-->
+        <!--@Table pms_member_price-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="member_level_id" jdbcType="BIGINT" property="memberLevelId"/>
+        <result column="member_level_name" jdbcType="VARCHAR" property="memberLevelName"/>
+        <result column="member_price" jdbcType="DECIMAL" property="memberPrice"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, product_id, member_level_id, member_level_name, member_price, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from pms_member_price
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from pms_member_price
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsMemberPrice" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_member_price (product_id, member_level_id, member_level_name,
+                                      member_price, create_time, update_time)
+        values (#{productId,jdbcType=BIGINT}, #{memberLevelId,jdbcType=BIGINT}, #{memberLevelName,jdbcType=VARCHAR},
+                #{memberPrice,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsMemberPrice" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_member_price
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id,
+            </if>
+            <if test="memberLevelName != null and memberLevelName != ''">
+                member_level_name,
+            </if>
+            <if test="memberPrice != null">
+                member_price,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelId != null">
+                #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelName != null and memberLevelName != ''">
+                #{memberLevelName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberPrice != null">
+                #{memberPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsMemberPrice">
+        <!--@mbg.generated-->
+        update pms_member_price
+        <set>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id = #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelName != null and memberLevelName != ''">
+                member_level_name = #{memberLevelName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberPrice != null">
+                member_price = #{memberPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsMemberPrice">
+        <!--@mbg.generated-->
+        update pms_member_price
+        set product_id        = #{productId,jdbcType=BIGINT},
+            member_level_id   = #{memberLevelId,jdbcType=BIGINT},
+            member_level_name = #{memberLevelName,jdbcType=VARCHAR},
+            member_price      = #{memberPrice,jdbcType=DECIMAL},
+            create_time       = #{createTime,jdbcType=TIMESTAMP},
+            update_time       = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_member_price
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="member_level_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevelId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="member_level_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevelName,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="member_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberPrice,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_member_price
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productId != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="member_level_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberLevelId != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevelId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="member_level_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberLevelName != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevelName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="member_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberPrice != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberPrice,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_member_price
+                (product_id, member_level_id, member_level_name, member_price, create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.productId,jdbcType=BIGINT}, #{item.memberLevelId,jdbcType=BIGINT},
+             #{item.memberLevelName,jdbcType=VARCHAR},
+             #{item.memberPrice,jdbcType=DECIMAL}, #{item.createTime,jdbcType=TIMESTAMP},
+             #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsMemberPrice" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_member_price
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            product_id,
+            member_level_id,
+            member_level_name,
+            member_price,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{productId,jdbcType=BIGINT},
+            #{memberLevelId,jdbcType=BIGINT},
+            #{memberLevelName,jdbcType=VARCHAR},
+            #{memberPrice,jdbcType=DECIMAL},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            product_id        = #{productId,jdbcType=BIGINT},
+            member_level_id   = #{memberLevelId,jdbcType=BIGINT},
+            member_level_name = #{memberLevelName,jdbcType=VARCHAR},
+            member_price      = #{memberPrice,jdbcType=DECIMAL},
+            create_time       = #{createTime,jdbcType=TIMESTAMP},
+            update_time       = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsMemberPrice" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_member_price
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id,
+            </if>
+            <if test="memberLevelName != null and memberLevelName != ''">
+                member_level_name,
+            </if>
+            <if test="memberPrice != null">
+                member_price,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelId != null">
+                #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelName != null and memberLevelName != ''">
+                #{memberLevelName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberPrice != null">
+                #{memberPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id = #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelName != null and memberLevelName != ''">
+                member_level_name = #{memberLevelName,jdbcType=VARCHAR},
+            </if>
+            <if test="memberPrice != null">
+                member_price = #{memberPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

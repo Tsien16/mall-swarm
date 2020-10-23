@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.ums.UmsIntegrationChangeHistoryMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.ums.UmsIntegrationChangeHistory">
+        <!--@mbg.generated-->
+        <!--@Table ums_integration_change_history-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="member_id" jdbcType="BIGINT" property="memberId"/>
+        <result column="change_type" jdbcType="INTEGER" property="changeType"/>
+        <result column="source_type" jdbcType="INTEGER" property="sourceType"/>
+        <result column="change_count" jdbcType="INTEGER" property="changeCount"/>
+        <result column="operate_man" jdbcType="VARCHAR" property="operateMan"/>
+        <result column="operate_note" jdbcType="VARCHAR" property="operateNote"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, member_id, change_type, source_type, change_count, operate_man, operate_note,
+        create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from ums_integration_change_history
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from ums_integration_change_history
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsIntegrationChangeHistory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_integration_change_history (member_id, change_type, source_type,
+                                                    change_count, operate_man, operate_note,
+                                                    create_time, update_time)
+        values (#{memberId,jdbcType=BIGINT}, #{changeType,jdbcType=INTEGER}, #{sourceType,jdbcType=INTEGER},
+                #{changeCount,jdbcType=INTEGER}, #{operateMan,jdbcType=VARCHAR}, #{operateNote,jdbcType=VARCHAR},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsIntegrationChangeHistory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_integration_change_history
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="changeType != null">
+                change_type,
+            </if>
+            <if test="sourceType != null">
+                source_type,
+            </if>
+            <if test="changeCount != null">
+                change_count,
+            </if>
+            <if test="operateMan != null and operateMan != ''">
+                operate_man,
+            </if>
+            <if test="operateNote != null and operateNote != ''">
+                operate_note,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="changeType != null">
+                #{changeType,jdbcType=INTEGER},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="changeCount != null">
+                #{changeCount,jdbcType=INTEGER},
+            </if>
+            <if test="operateMan != null and operateMan != ''">
+                #{operateMan,jdbcType=VARCHAR},
+            </if>
+            <if test="operateNote != null and operateNote != ''">
+                #{operateNote,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsIntegrationChangeHistory">
+        <!--@mbg.generated-->
+        update ums_integration_change_history
+        <set>
+            <if test="memberId != null">
+                member_id = #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="changeType != null">
+                change_type = #{changeType,jdbcType=INTEGER},
+            </if>
+            <if test="sourceType != null">
+                source_type = #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="changeCount != null">
+                change_count = #{changeCount,jdbcType=INTEGER},
+            </if>
+            <if test="operateMan != null and operateMan != ''">
+                operate_man = #{operateMan,jdbcType=VARCHAR},
+            </if>
+            <if test="operateNote != null and operateNote != ''">
+                operate_note = #{operateNote,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.ums.UmsIntegrationChangeHistory">
+        <!--@mbg.generated-->
+        update ums_integration_change_history
+        set member_id    = #{memberId,jdbcType=BIGINT},
+            change_type  = #{changeType,jdbcType=INTEGER},
+            source_type  = #{sourceType,jdbcType=INTEGER},
+            change_count = #{changeCount,jdbcType=INTEGER},
+            operate_man  = #{operateMan,jdbcType=VARCHAR},
+            operate_note = #{operateNote,jdbcType=VARCHAR},
+            create_time  = #{createTime,jdbcType=TIMESTAMP},
+            update_time  = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update ums_integration_change_history
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="member_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="change_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.changeType,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="source_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.sourceType,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="change_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.changeCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="operate_man = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.operateMan,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="operate_note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.operateNote,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update ums_integration_change_history
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="member_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberId != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="change_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.changeType != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.changeType,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="source_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sourceType != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.sourceType,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="change_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.changeCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.changeCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="operate_man = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.operateMan != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.operateMan,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="operate_note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.operateNote != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.operateNote,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_integration_change_history
+                (member_id, change_type, source_type, change_count, operate_man, operate_note, create_time,
+                 update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.memberId,jdbcType=BIGINT}, #{item.changeType,jdbcType=INTEGER}, #{item.sourceType,jdbcType=INTEGER},
+             #{item.changeCount,jdbcType=INTEGER}, #{item.operateMan,jdbcType=VARCHAR},
+             #{item.operateNote,jdbcType=VARCHAR},
+             #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsIntegrationChangeHistory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_integration_change_history
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            member_id,
+            change_type,
+            source_type,
+            change_count,
+            operate_man,
+            operate_note,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{memberId,jdbcType=BIGINT},
+            #{changeType,jdbcType=INTEGER},
+            #{sourceType,jdbcType=INTEGER},
+            #{changeCount,jdbcType=INTEGER},
+            #{operateMan,jdbcType=VARCHAR},
+            #{operateNote,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            member_id    = #{memberId,jdbcType=BIGINT},
+            change_type  = #{changeType,jdbcType=INTEGER},
+            source_type  = #{sourceType,jdbcType=INTEGER},
+            change_count = #{changeCount,jdbcType=INTEGER},
+            operate_man  = #{operateMan,jdbcType=VARCHAR},
+            operate_note = #{operateNote,jdbcType=VARCHAR},
+            create_time  = #{createTime,jdbcType=TIMESTAMP},
+            update_time  = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsIntegrationChangeHistory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_integration_change_history
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="changeType != null">
+                change_type,
+            </if>
+            <if test="sourceType != null">
+                source_type,
+            </if>
+            <if test="changeCount != null">
+                change_count,
+            </if>
+            <if test="operateMan != null and operateMan != ''">
+                operate_man,
+            </if>
+            <if test="operateNote != null and operateNote != ''">
+                operate_note,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="changeType != null">
+                #{changeType,jdbcType=INTEGER},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="changeCount != null">
+                #{changeCount,jdbcType=INTEGER},
+            </if>
+            <if test="operateMan != null and operateMan != ''">
+                #{operateMan,jdbcType=VARCHAR},
+            </if>
+            <if test="operateNote != null and operateNote != ''">
+                #{operateNote,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="memberId != null">
+                member_id = #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="changeType != null">
+                change_type = #{changeType,jdbcType=INTEGER},
+            </if>
+            <if test="sourceType != null">
+                source_type = #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="changeCount != null">
+                change_count = #{changeCount,jdbcType=INTEGER},
+            </if>
+            <if test="operateMan != null and operateMan != ''">
+                operate_man = #{operateMan,jdbcType=VARCHAR},
+            </if>
+            <if test="operateNote != null and operateNote != ''">
+                operate_note = #{operateNote,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

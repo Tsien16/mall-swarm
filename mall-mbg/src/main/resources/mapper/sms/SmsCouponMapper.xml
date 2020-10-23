@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.sms.SmsCouponMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.sms.SmsCoupon">
+        <!--@mbg.generated-->
+        <!--@Table sms_coupon-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="use_type" jdbcType="INTEGER" property="useType"/>
+        <result column="min_point" jdbcType="DECIMAL" property="minPoint"/>
+        <result column="count" jdbcType="INTEGER" property="count"/>
+        <result column="publish_count" jdbcType="INTEGER" property="publishCount"/>
+        <result column="use_count" jdbcType="INTEGER" property="useCount"/>
+        <result column="receive_count" jdbcType="INTEGER" property="receiveCount"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="member_level" jdbcType="INTEGER" property="memberLevel"/>
+        <result column="per_limit" jdbcType="INTEGER" property="perLimit"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="enable_time" jdbcType="TIMESTAMP" property="enableTime"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="note" jdbcType="VARCHAR" property="note"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, platform, `type`, use_type, min_point, `count`, publish_count, use_count,
+        receive_count, amount, member_level, per_limit, code, enable_time, start_time, end_time,
+        note, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from sms_coupon
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from sms_coupon
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tsien.mall.mbg.domain.model.sms.SmsCoupon"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into sms_coupon (`name`, platform, `type`,
+                                use_type, min_point, `count`,
+                                publish_count, use_count, receive_count,
+                                amount, member_level, per_limit,
+                                code, enable_time, start_time,
+                                end_time, note, create_time,
+                                update_time)
+        values (#{name,jdbcType=VARCHAR}, #{platform,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},
+                #{useType,jdbcType=INTEGER}, #{minPoint,jdbcType=DECIMAL}, #{count,jdbcType=INTEGER},
+                #{publishCount,jdbcType=INTEGER}, #{useCount,jdbcType=INTEGER}, #{receiveCount,jdbcType=INTEGER},
+                #{amount,jdbcType=DECIMAL}, #{memberLevel,jdbcType=INTEGER}, #{perLimit,jdbcType=INTEGER},
+                #{code,jdbcType=VARCHAR}, #{enableTime,jdbcType=TIMESTAMP}, #{startTime,jdbcType=TIMESTAMP},
+                #{endTime,jdbcType=TIMESTAMP}, #{note,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.sms.SmsCoupon" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into sms_coupon
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+            <if test="useType != null">
+                use_type,
+            </if>
+            <if test="minPoint != null">
+                min_point,
+            </if>
+            <if test="count != null">
+                `count`,
+            </if>
+            <if test="publishCount != null">
+                publish_count,
+            </if>
+            <if test="useCount != null">
+                use_count,
+            </if>
+            <if test="receiveCount != null">
+                receive_count,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="memberLevel != null">
+                member_level,
+            </if>
+            <if test="perLimit != null">
+                per_limit,
+            </if>
+            <if test="code != null and code != ''">
+                code,
+            </if>
+            <if test="enableTime != null">
+                enable_time,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="note != null and note != ''">
+                note,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="useType != null">
+                #{useType,jdbcType=INTEGER},
+            </if>
+            <if test="minPoint != null">
+                #{minPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="count != null">
+                #{count,jdbcType=INTEGER},
+            </if>
+            <if test="publishCount != null">
+                #{publishCount,jdbcType=INTEGER},
+            </if>
+            <if test="useCount != null">
+                #{useCount,jdbcType=INTEGER},
+            </if>
+            <if test="receiveCount != null">
+                #{receiveCount,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="memberLevel != null">
+                #{memberLevel,jdbcType=INTEGER},
+            </if>
+            <if test="perLimit != null">
+                #{perLimit,jdbcType=INTEGER},
+            </if>
+            <if test="code != null and code != ''">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="enableTime != null">
+                #{enableTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="note != null and note != ''">
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.sms.SmsCoupon">
+        <!--@mbg.generated-->
+        update sms_coupon
+        <set>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                `type` = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="useType != null">
+                use_type = #{useType,jdbcType=INTEGER},
+            </if>
+            <if test="minPoint != null">
+                min_point = #{minPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="count != null">
+                `count` = #{count,jdbcType=INTEGER},
+            </if>
+            <if test="publishCount != null">
+                publish_count = #{publishCount,jdbcType=INTEGER},
+            </if>
+            <if test="useCount != null">
+                use_count = #{useCount,jdbcType=INTEGER},
+            </if>
+            <if test="receiveCount != null">
+                receive_count = #{receiveCount,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="memberLevel != null">
+                member_level = #{memberLevel,jdbcType=INTEGER},
+            </if>
+            <if test="perLimit != null">
+                per_limit = #{perLimit,jdbcType=INTEGER},
+            </if>
+            <if test="code != null and code != ''">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="enableTime != null">
+                enable_time = #{enableTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.sms.SmsCoupon">
+        <!--@mbg.generated-->
+        update sms_coupon
+        set `name`        = #{name,jdbcType=VARCHAR},
+            platform      = #{platform,jdbcType=INTEGER},
+            `type`        = #{type,jdbcType=INTEGER},
+            use_type      = #{useType,jdbcType=INTEGER},
+            min_point     = #{minPoint,jdbcType=DECIMAL},
+            `count`       = #{count,jdbcType=INTEGER},
+            publish_count = #{publishCount,jdbcType=INTEGER},
+            use_count     = #{useCount,jdbcType=INTEGER},
+            receive_count = #{receiveCount,jdbcType=INTEGER},
+            amount        = #{amount,jdbcType=DECIMAL},
+            member_level  = #{memberLevel,jdbcType=INTEGER},
+            per_limit     = #{perLimit,jdbcType=INTEGER},
+            code          = #{code,jdbcType=VARCHAR},
+            enable_time   = #{enableTime,jdbcType=TIMESTAMP},
+            start_time    = #{startTime,jdbcType=TIMESTAMP},
+            end_time      = #{endTime,jdbcType=TIMESTAMP},
+            note          = #{note,jdbcType=VARCHAR},
+            create_time   = #{createTime,jdbcType=TIMESTAMP},
+            update_time   = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update sms_coupon
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="platform = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.platform,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="`type` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.type,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="use_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.useType,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="min_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.minPoint,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="`count` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.count,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="publish_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.publishCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="use_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.useCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="receive_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.receiveCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="amount = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.amount,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="member_level = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevel,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="per_limit = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.perLimit,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="code = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.code,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="enable_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.enableTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="start_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.startTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="end_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.endTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.note,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update sms_coupon
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.name != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="platform = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.platform != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.platform,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`type` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.type != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.type,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="use_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.useType != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.useType,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="min_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.minPoint != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.minPoint,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`count` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.count != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.count,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="publish_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.publishCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.publishCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="use_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.useCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.useCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="receive_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.receiveCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.receiveCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="amount = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.amount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.amount,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="member_level = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberLevel != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevel,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="per_limit = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.perLimit != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.perLimit,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="code = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.code != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.code,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="enable_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.enableTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.enableTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="start_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.startTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.startTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="end_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.endTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.endTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.note != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.note,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into sms_coupon
+                (`name`, platform, `type`, use_type, min_point, `count`, publish_count, use_count,
+                 receive_count, amount, member_level, per_limit, code, enable_time, start_time,
+                 end_time, note, create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name,jdbcType=VARCHAR}, #{item.platform,jdbcType=INTEGER}, #{item.type,jdbcType=INTEGER},
+             #{item.useType,jdbcType=INTEGER}, #{item.minPoint,jdbcType=DECIMAL}, #{item.count,jdbcType=INTEGER},
+             #{item.publishCount,jdbcType=INTEGER}, #{item.useCount,jdbcType=INTEGER},
+             #{item.receiveCount,jdbcType=INTEGER},
+             #{item.amount,jdbcType=DECIMAL}, #{item.memberLevel,jdbcType=INTEGER}, #{item.perLimit,jdbcType=INTEGER},
+             #{item.code,jdbcType=VARCHAR}, #{item.enableTime,jdbcType=TIMESTAMP}, #{item.startTime,jdbcType=TIMESTAMP},
+             #{item.endTime,jdbcType=TIMESTAMP}, #{item.note,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP},
+             #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.sms.SmsCoupon" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into sms_coupon
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            `name`,
+            platform,
+            `type`,
+            use_type,
+            min_point,
+            `count`,
+            publish_count,
+            use_count,
+            receive_count,
+            amount,
+            member_level,
+            per_limit,
+            code,
+            enable_time,
+            start_time,
+            end_time,
+            note,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{name,jdbcType=VARCHAR},
+            #{platform,jdbcType=INTEGER},
+            #{type,jdbcType=INTEGER},
+            #{useType,jdbcType=INTEGER},
+            #{minPoint,jdbcType=DECIMAL},
+            #{count,jdbcType=INTEGER},
+            #{publishCount,jdbcType=INTEGER},
+            #{useCount,jdbcType=INTEGER},
+            #{receiveCount,jdbcType=INTEGER},
+            #{amount,jdbcType=DECIMAL},
+            #{memberLevel,jdbcType=INTEGER},
+            #{perLimit,jdbcType=INTEGER},
+            #{code,jdbcType=VARCHAR},
+            #{enableTime,jdbcType=TIMESTAMP},
+            #{startTime,jdbcType=TIMESTAMP},
+            #{endTime,jdbcType=TIMESTAMP},
+            #{note,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            `name`        = #{name,jdbcType=VARCHAR},
+            platform      = #{platform,jdbcType=INTEGER},
+            `type`        = #{type,jdbcType=INTEGER},
+            use_type      = #{useType,jdbcType=INTEGER},
+            min_point     = #{minPoint,jdbcType=DECIMAL},
+            `count`       = #{count,jdbcType=INTEGER},
+            publish_count = #{publishCount,jdbcType=INTEGER},
+            use_count     = #{useCount,jdbcType=INTEGER},
+            receive_count = #{receiveCount,jdbcType=INTEGER},
+            amount        = #{amount,jdbcType=DECIMAL},
+            member_level  = #{memberLevel,jdbcType=INTEGER},
+            per_limit     = #{perLimit,jdbcType=INTEGER},
+            code          = #{code,jdbcType=VARCHAR},
+            enable_time   = #{enableTime,jdbcType=TIMESTAMP},
+            start_time    = #{startTime,jdbcType=TIMESTAMP},
+            end_time      = #{endTime,jdbcType=TIMESTAMP},
+            note          = #{note,jdbcType=VARCHAR},
+            create_time   = #{createTime,jdbcType=TIMESTAMP},
+            update_time   = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.sms.SmsCoupon" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into sms_coupon
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+            <if test="useType != null">
+                use_type,
+            </if>
+            <if test="minPoint != null">
+                min_point,
+            </if>
+            <if test="count != null">
+                `count`,
+            </if>
+            <if test="publishCount != null">
+                publish_count,
+            </if>
+            <if test="useCount != null">
+                use_count,
+            </if>
+            <if test="receiveCount != null">
+                receive_count,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="memberLevel != null">
+                member_level,
+            </if>
+            <if test="perLimit != null">
+                per_limit,
+            </if>
+            <if test="code != null and code != ''">
+                code,
+            </if>
+            <if test="enableTime != null">
+                enable_time,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="note != null and note != ''">
+                note,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="useType != null">
+                #{useType,jdbcType=INTEGER},
+            </if>
+            <if test="minPoint != null">
+                #{minPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="count != null">
+                #{count,jdbcType=INTEGER},
+            </if>
+            <if test="publishCount != null">
+                #{publishCount,jdbcType=INTEGER},
+            </if>
+            <if test="useCount != null">
+                #{useCount,jdbcType=INTEGER},
+            </if>
+            <if test="receiveCount != null">
+                #{receiveCount,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="memberLevel != null">
+                #{memberLevel,jdbcType=INTEGER},
+            </if>
+            <if test="perLimit != null">
+                #{perLimit,jdbcType=INTEGER},
+            </if>
+            <if test="code != null and code != ''">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="enableTime != null">
+                #{enableTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="note != null and note != ''">
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                `type` = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="useType != null">
+                use_type = #{useType,jdbcType=INTEGER},
+            </if>
+            <if test="minPoint != null">
+                min_point = #{minPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="count != null">
+                `count` = #{count,jdbcType=INTEGER},
+            </if>
+            <if test="publishCount != null">
+                publish_count = #{publishCount,jdbcType=INTEGER},
+            </if>
+            <if test="useCount != null">
+                use_count = #{useCount,jdbcType=INTEGER},
+            </if>
+            <if test="receiveCount != null">
+                receive_count = #{receiveCount,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="memberLevel != null">
+                member_level = #{memberLevel,jdbcType=INTEGER},
+            </if>
+            <if test="perLimit != null">
+                per_limit = #{perLimit,jdbcType=INTEGER},
+            </if>
+            <if test="code != null and code != ''">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="enableTime != null">
+                enable_time = #{enableTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

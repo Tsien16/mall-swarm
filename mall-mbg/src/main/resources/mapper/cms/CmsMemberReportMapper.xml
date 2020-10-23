@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.cms.CmsMemberReportMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.cms.CmsMemberReport">
+        <!--@mbg.generated-->
+        <!--@Table cms_member_report-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="report_type" jdbcType="INTEGER" property="reportType"/>
+        <result column="report_member_name" jdbcType="VARCHAR" property="reportMemberName"/>
+        <result column="report_object" jdbcType="VARCHAR" property="reportObject"/>
+        <result column="report_status" jdbcType="INTEGER" property="reportStatus"/>
+        <result column="note" jdbcType="VARCHAR" property="note"/>
+        <result column="handle_status" jdbcType="INTEGER" property="handleStatus"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, report_type, report_member_name, report_object, report_status, note, handle_status,
+        create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from cms_member_report
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from cms_member_report
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.cms.CmsMemberReport" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into cms_member_report (report_type, report_member_name, report_object,
+                                       report_status, note, handle_status,
+                                       create_time, update_time)
+        values (#{reportType,jdbcType=INTEGER}, #{reportMemberName,jdbcType=VARCHAR}, #{reportObject,jdbcType=VARCHAR},
+                #{reportStatus,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, #{handleStatus,jdbcType=INTEGER},
+                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.cms.CmsMemberReport" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into cms_member_report
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="reportType != null">
+                report_type,
+            </if>
+            <if test="reportMemberName != null and reportMemberName != ''">
+                report_member_name,
+            </if>
+            <if test="reportObject != null and reportObject != ''">
+                report_object,
+            </if>
+            <if test="reportStatus != null">
+                report_status,
+            </if>
+            <if test="note != null and note != ''">
+                note,
+            </if>
+            <if test="handleStatus != null">
+                handle_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="reportType != null">
+                #{reportType,jdbcType=INTEGER},
+            </if>
+            <if test="reportMemberName != null and reportMemberName != ''">
+                #{reportMemberName,jdbcType=VARCHAR},
+            </if>
+            <if test="reportObject != null and reportObject != ''">
+                #{reportObject,jdbcType=VARCHAR},
+            </if>
+            <if test="reportStatus != null">
+                #{reportStatus,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="handleStatus != null">
+                #{handleStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.cms.CmsMemberReport">
+        <!--@mbg.generated-->
+        update cms_member_report
+        <set>
+            <if test="reportType != null">
+                report_type = #{reportType,jdbcType=INTEGER},
+            </if>
+            <if test="reportMemberName != null and reportMemberName != ''">
+                report_member_name = #{reportMemberName,jdbcType=VARCHAR},
+            </if>
+            <if test="reportObject != null and reportObject != ''">
+                report_object = #{reportObject,jdbcType=VARCHAR},
+            </if>
+            <if test="reportStatus != null">
+                report_status = #{reportStatus,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="handleStatus != null">
+                handle_status = #{handleStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.cms.CmsMemberReport">
+        <!--@mbg.generated-->
+        update cms_member_report
+        set report_type        = #{reportType,jdbcType=INTEGER},
+            report_member_name = #{reportMemberName,jdbcType=VARCHAR},
+            report_object      = #{reportObject,jdbcType=VARCHAR},
+            report_status      = #{reportStatus,jdbcType=INTEGER},
+            note               = #{note,jdbcType=VARCHAR},
+            handle_status      = #{handleStatus,jdbcType=INTEGER},
+            create_time        = #{createTime,jdbcType=TIMESTAMP},
+            update_time        = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update cms_member_report
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="report_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.reportType,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="report_member_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.reportMemberName,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="report_object = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.reportObject,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="report_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.reportStatus,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.note,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="handle_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.handleStatus,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update cms_member_report
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="report_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.reportType != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.reportType,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="report_member_name = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.reportMemberName != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.reportMemberName,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="report_object = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.reportObject != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.reportObject,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="report_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.reportStatus != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.reportStatus,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.note != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.note,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="handle_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.handleStatus != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.handleStatus,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into cms_member_report
+                (report_type, report_member_name, report_object, report_status, note, handle_status,
+                 create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.reportType,jdbcType=INTEGER}, #{item.reportMemberName,jdbcType=VARCHAR},
+             #{item.reportObject,jdbcType=VARCHAR}, #{item.reportStatus,jdbcType=INTEGER},
+             #{item.note,jdbcType=VARCHAR},
+             #{item.handleStatus,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP},
+             #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.cms.CmsMemberReport" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into cms_member_report
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            report_type,
+            report_member_name,
+            report_object,
+            report_status,
+            note,
+            handle_status,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{reportType,jdbcType=INTEGER},
+            #{reportMemberName,jdbcType=VARCHAR},
+            #{reportObject,jdbcType=VARCHAR},
+            #{reportStatus,jdbcType=INTEGER},
+            #{note,jdbcType=VARCHAR},
+            #{handleStatus,jdbcType=INTEGER},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            report_type        = #{reportType,jdbcType=INTEGER},
+            report_member_name = #{reportMemberName,jdbcType=VARCHAR},
+            report_object      = #{reportObject,jdbcType=VARCHAR},
+            report_status      = #{reportStatus,jdbcType=INTEGER},
+            note               = #{note,jdbcType=VARCHAR},
+            handle_status      = #{handleStatus,jdbcType=INTEGER},
+            create_time        = #{createTime,jdbcType=TIMESTAMP},
+            update_time        = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.cms.CmsMemberReport" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into cms_member_report
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="reportType != null">
+                report_type,
+            </if>
+            <if test="reportMemberName != null and reportMemberName != ''">
+                report_member_name,
+            </if>
+            <if test="reportObject != null and reportObject != ''">
+                report_object,
+            </if>
+            <if test="reportStatus != null">
+                report_status,
+            </if>
+            <if test="note != null and note != ''">
+                note,
+            </if>
+            <if test="handleStatus != null">
+                handle_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="reportType != null">
+                #{reportType,jdbcType=INTEGER},
+            </if>
+            <if test="reportMemberName != null and reportMemberName != ''">
+                #{reportMemberName,jdbcType=VARCHAR},
+            </if>
+            <if test="reportObject != null and reportObject != ''">
+                #{reportObject,jdbcType=VARCHAR},
+            </if>
+            <if test="reportStatus != null">
+                #{reportStatus,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="handleStatus != null">
+                #{handleStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="reportType != null">
+                report_type = #{reportType,jdbcType=INTEGER},
+            </if>
+            <if test="reportMemberName != null and reportMemberName != ''">
+                report_member_name = #{reportMemberName,jdbcType=VARCHAR},
+            </if>
+            <if test="reportObject != null and reportObject != ''">
+                report_object = #{reportObject,jdbcType=VARCHAR},
+            </if>
+            <if test="reportStatus != null">
+                report_status = #{reportStatus,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="handleStatus != null">
+                handle_status = #{handleStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

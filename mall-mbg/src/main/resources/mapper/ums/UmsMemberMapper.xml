@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.ums.UmsMemberMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.ums.UmsMember">
+        <!--@mbg.generated-->
+        <!--@Table ums_member-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="member_level_id" jdbcType="BIGINT" property="memberLevelId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="birthday" jdbcType="DATE" property="birthday"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="job" jdbcType="VARCHAR" property="job"/>
+        <result column="personalized_signature" jdbcType="VARCHAR" property="personalizedSignature"/>
+        <result column="source_type" jdbcType="INTEGER" property="sourceType"/>
+        <result column="integration" jdbcType="INTEGER" property="integration"/>
+        <result column="growth" jdbcType="INTEGER" property="growth"/>
+        <result column="lucky_count" jdbcType="INTEGER" property="luckyCount"/>
+        <result column="history_integration" jdbcType="INTEGER" property="historyIntegration"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, member_level_id, username, `password`, nickname, phone, icon, gender, birthday,
+        city, job, personalized_signature, source_type, integration, growth, lucky_count,
+        history_integration, `status`, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from ums_member
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from ums_member
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMember"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member (member_level_id, username, `password`,
+                                nickname, phone, icon,
+                                gender, birthday, city,
+                                job, personalized_signature, source_type,
+                                integration, growth, lucky_count,
+                                history_integration, `status`, create_time,
+                                update_time)
+        values (#{memberLevelId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{nickname,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
+                #{gender,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{city,jdbcType=VARCHAR},
+                #{job,jdbcType=VARCHAR}, #{personalizedSignature,jdbcType=VARCHAR}, #{sourceType,jdbcType=INTEGER},
+                #{integration,jdbcType=INTEGER}, #{growth,jdbcType=INTEGER}, #{luckyCount,jdbcType=INTEGER},
+                #{historyIntegration,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMember" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="memberLevelId != null">
+                member_level_id,
+            </if>
+            <if test="username != null and username != ''">
+                username,
+            </if>
+            <if test="password != null and password != ''">
+                `password`,
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname,
+            </if>
+            <if test="phone != null and phone != ''">
+                phone,
+            </if>
+            <if test="icon != null and icon != ''">
+                icon,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="city != null and city != ''">
+                city,
+            </if>
+            <if test="job != null and job != ''">
+                job,
+            </if>
+            <if test="personalizedSignature != null and personalizedSignature != ''">
+                personalized_signature,
+            </if>
+            <if test="sourceType != null">
+                source_type,
+            </if>
+            <if test="integration != null">
+                integration,
+            </if>
+            <if test="growth != null">
+                growth,
+            </if>
+            <if test="luckyCount != null">
+                lucky_count,
+            </if>
+            <if test="historyIntegration != null">
+                history_integration,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="memberLevelId != null">
+                #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="username != null and username != ''">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != ''">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=DATE},
+            </if>
+            <if test="city != null and city != ''">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="job != null and job != ''">
+                #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="personalizedSignature != null and personalizedSignature != ''">
+                #{personalizedSignature,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="integration != null">
+                #{integration,jdbcType=INTEGER},
+            </if>
+            <if test="growth != null">
+                #{growth,jdbcType=INTEGER},
+            </if>
+            <if test="luckyCount != null">
+                #{luckyCount,jdbcType=INTEGER},
+            </if>
+            <if test="historyIntegration != null">
+                #{historyIntegration,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMember">
+        <!--@mbg.generated-->
+        update ums_member
+        <set>
+            <if test="memberLevelId != null">
+                member_level_id = #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=DATE},
+            </if>
+            <if test="city != null and city != ''">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="job != null and job != ''">
+                job = #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="personalizedSignature != null and personalizedSignature != ''">
+                personalized_signature = #{personalizedSignature,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                source_type = #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="integration != null">
+                integration = #{integration,jdbcType=INTEGER},
+            </if>
+            <if test="growth != null">
+                growth = #{growth,jdbcType=INTEGER},
+            </if>
+            <if test="luckyCount != null">
+                lucky_count = #{luckyCount,jdbcType=INTEGER},
+            </if>
+            <if test="historyIntegration != null">
+                history_integration = #{historyIntegration,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMember">
+        <!--@mbg.generated-->
+        update ums_member
+        set member_level_id        = #{memberLevelId,jdbcType=BIGINT},
+            username               = #{username,jdbcType=VARCHAR},
+            `password`             = #{password,jdbcType=VARCHAR},
+            nickname               = #{nickname,jdbcType=VARCHAR},
+            phone                  = #{phone,jdbcType=VARCHAR},
+            icon                   = #{icon,jdbcType=VARCHAR},
+            gender                 = #{gender,jdbcType=INTEGER},
+            birthday               = #{birthday,jdbcType=DATE},
+            city                   = #{city,jdbcType=VARCHAR},
+            job                    = #{job,jdbcType=VARCHAR},
+            personalized_signature = #{personalizedSignature,jdbcType=VARCHAR},
+            source_type            = #{sourceType,jdbcType=INTEGER},
+            integration            = #{integration,jdbcType=INTEGER},
+            growth                 = #{growth,jdbcType=INTEGER},
+            lucky_count            = #{luckyCount,jdbcType=INTEGER},
+            history_integration    = #{historyIntegration,jdbcType=INTEGER},
+            `status`               = #{status,jdbcType=INTEGER},
+            create_time            = #{createTime,jdbcType=TIMESTAMP},
+            update_time            = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update ums_member
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="member_level_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevelId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="username = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.username,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`password` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.password,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="nickname = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.nickname,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="phone = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.phone,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="icon = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.icon,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="gender = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.gender,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="birthday = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.birthday,jdbcType=DATE}
+                </foreach>
+            </trim>
+            <trim prefix="city = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.city,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="job = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.job,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="personalized_signature = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.personalizedSignature,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="source_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.sourceType,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="integration = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.integration,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="growth = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.growth,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="lucky_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.luckyCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="history_integration = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.historyIntegration,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="`status` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update ums_member
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="member_level_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.memberLevelId != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.memberLevelId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="username = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.username != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.username,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`password` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.password != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.password,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="nickname = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.nickname != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.nickname,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="phone = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.phone != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.phone,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="icon = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.icon != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.icon,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="gender = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.gender != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.gender,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="birthday = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.birthday != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.birthday,jdbcType=DATE}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="city = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.city != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.city,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="job = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.job != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.job,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="personalized_signature = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.personalizedSignature != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.personalizedSignature,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="source_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sourceType != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.sourceType,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="integration = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.integration != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.integration,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="growth = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.growth != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.growth,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="lucky_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.luckyCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.luckyCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="history_integration = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.historyIntegration != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.historyIntegration,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`status` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.status != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member
+                (member_level_id, username, `password`, nickname, phone, icon, gender, birthday,
+                 city, job, personalized_signature, source_type, integration, growth, lucky_count,
+                 history_integration, `status`, create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.memberLevelId,jdbcType=BIGINT}, #{item.username,jdbcType=VARCHAR},
+             #{item.password,jdbcType=VARCHAR},
+             #{item.nickname,jdbcType=VARCHAR}, #{item.phone,jdbcType=VARCHAR}, #{item.icon,jdbcType=VARCHAR},
+             #{item.gender,jdbcType=INTEGER}, #{item.birthday,jdbcType=DATE}, #{item.city,jdbcType=VARCHAR},
+             #{item.job,jdbcType=VARCHAR}, #{item.personalizedSignature,jdbcType=VARCHAR},
+             #{item.sourceType,jdbcType=INTEGER},
+             #{item.integration,jdbcType=INTEGER}, #{item.growth,jdbcType=INTEGER}, #{item.luckyCount,jdbcType=INTEGER},
+             #{item.historyIntegration,jdbcType=INTEGER}, #{item.status,jdbcType=INTEGER},
+             #{item.createTime,jdbcType=TIMESTAMP},
+             #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMember" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            member_level_id,
+            username,
+            `password`,
+            nickname,
+            phone,
+            icon,
+            gender,
+            birthday,
+            city,
+            job,
+            personalized_signature,
+            source_type,
+            integration,
+            growth,
+            lucky_count,
+            history_integration,
+            `status`,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{memberLevelId,jdbcType=BIGINT},
+            #{username,jdbcType=VARCHAR},
+            #{password,jdbcType=VARCHAR},
+            #{nickname,jdbcType=VARCHAR},
+            #{phone,jdbcType=VARCHAR},
+            #{icon,jdbcType=VARCHAR},
+            #{gender,jdbcType=INTEGER},
+            #{birthday,jdbcType=DATE},
+            #{city,jdbcType=VARCHAR},
+            #{job,jdbcType=VARCHAR},
+            #{personalizedSignature,jdbcType=VARCHAR},
+            #{sourceType,jdbcType=INTEGER},
+            #{integration,jdbcType=INTEGER},
+            #{growth,jdbcType=INTEGER},
+            #{luckyCount,jdbcType=INTEGER},
+            #{historyIntegration,jdbcType=INTEGER},
+            #{status,jdbcType=INTEGER},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            member_level_id        = #{memberLevelId,jdbcType=BIGINT},
+            username               = #{username,jdbcType=VARCHAR},
+            `password`             = #{password,jdbcType=VARCHAR},
+            nickname               = #{nickname,jdbcType=VARCHAR},
+            phone                  = #{phone,jdbcType=VARCHAR},
+            icon                   = #{icon,jdbcType=VARCHAR},
+            gender                 = #{gender,jdbcType=INTEGER},
+            birthday               = #{birthday,jdbcType=DATE},
+            city                   = #{city,jdbcType=VARCHAR},
+            job                    = #{job,jdbcType=VARCHAR},
+            personalized_signature = #{personalizedSignature,jdbcType=VARCHAR},
+            source_type            = #{sourceType,jdbcType=INTEGER},
+            integration            = #{integration,jdbcType=INTEGER},
+            growth                 = #{growth,jdbcType=INTEGER},
+            lucky_count            = #{luckyCount,jdbcType=INTEGER},
+            history_integration    = #{historyIntegration,jdbcType=INTEGER},
+            `status`               = #{status,jdbcType=INTEGER},
+            create_time            = #{createTime,jdbcType=TIMESTAMP},
+            update_time            = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMember" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id,
+            </if>
+            <if test="username != null and username != ''">
+                username,
+            </if>
+            <if test="password != null and password != ''">
+                `password`,
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname,
+            </if>
+            <if test="phone != null and phone != ''">
+                phone,
+            </if>
+            <if test="icon != null and icon != ''">
+                icon,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="city != null and city != ''">
+                city,
+            </if>
+            <if test="job != null and job != ''">
+                job,
+            </if>
+            <if test="personalizedSignature != null and personalizedSignature != ''">
+                personalized_signature,
+            </if>
+            <if test="sourceType != null">
+                source_type,
+            </if>
+            <if test="integration != null">
+                integration,
+            </if>
+            <if test="growth != null">
+                growth,
+            </if>
+            <if test="luckyCount != null">
+                lucky_count,
+            </if>
+            <if test="historyIntegration != null">
+                history_integration,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelId != null">
+                #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="username != null and username != ''">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != ''">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=DATE},
+            </if>
+            <if test="city != null and city != ''">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="job != null and job != ''">
+                #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="personalizedSignature != null and personalizedSignature != ''">
+                #{personalizedSignature,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="integration != null">
+                #{integration,jdbcType=INTEGER},
+            </if>
+            <if test="growth != null">
+                #{growth,jdbcType=INTEGER},
+            </if>
+            <if test="luckyCount != null">
+                #{luckyCount,jdbcType=INTEGER},
+            </if>
+            <if test="historyIntegration != null">
+                #{historyIntegration,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id = #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null and password != ''">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=DATE},
+            </if>
+            <if test="city != null and city != ''">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="job != null and job != ''">
+                job = #{job,jdbcType=VARCHAR},
+            </if>
+            <if test="personalizedSignature != null and personalizedSignature != ''">
+                personalized_signature = #{personalizedSignature,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                source_type = #{sourceType,jdbcType=INTEGER},
+            </if>
+            <if test="integration != null">
+                integration = #{integration,jdbcType=INTEGER},
+            </if>
+            <if test="growth != null">
+                growth = #{growth,jdbcType=INTEGER},
+            </if>
+            <if test="luckyCount != null">
+                lucky_count = #{luckyCount,jdbcType=INTEGER},
+            </if>
+            <if test="historyIntegration != null">
+                history_integration = #{historyIntegration,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="getUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ums_member
+        where username = #{username,jdbcType=VARCHAR}
+          and status = 1
+    </select>
+</mapper>

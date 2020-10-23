@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.ums.UmsMemberLevelMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.ums.UmsMemberLevel">
+        <!--@mbg.generated-->
+        <!--@Table ums_member_level-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="growth_point" jdbcType="INTEGER" property="growthPoint"/>
+        <result column="free_freight_point" jdbcType="DECIMAL" property="freeFreightPoint"/>
+        <result column="comment_growth_point" jdbcType="INTEGER" property="commentGrowthPoint"/>
+        <result column="privilege_free_freight" jdbcType="INTEGER" property="privilegeFreeFreight"/>
+        <result column="privilege_sign_in" jdbcType="INTEGER" property="privilegeSignIn"/>
+        <result column="privilege_comment" jdbcType="INTEGER" property="privilegeComment"/>
+        <result column="privilege_promotion" jdbcType="INTEGER" property="privilegePromotion"/>
+        <result column="privilege_member_price" jdbcType="INTEGER" property="privilegeMemberPrice"/>
+        <result column="privilege_birthday" jdbcType="INTEGER" property="privilegeBirthday"/>
+        <result column="note" jdbcType="VARCHAR" property="note"/>
+        <result column="default_status" jdbcType="INTEGER" property="defaultStatus"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, growth_point, free_freight_point, comment_growth_point, privilege_free_freight,
+        privilege_sign_in, privilege_comment, privilege_promotion, privilege_member_price,
+        privilege_birthday, note, default_status, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from ums_member_level
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from ums_member_level
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMemberLevel" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member_level (`name`, growth_point, free_freight_point,
+                                      comment_growth_point, privilege_free_freight,
+                                      privilege_sign_in, privilege_comment, privilege_promotion,
+                                      privilege_member_price, privilege_birthday,
+                                      note, default_status, create_time,
+                                      update_time)
+        values (#{name,jdbcType=VARCHAR}, #{growthPoint,jdbcType=INTEGER}, #{freeFreightPoint,jdbcType=DECIMAL},
+                #{commentGrowthPoint,jdbcType=INTEGER}, #{privilegeFreeFreight,jdbcType=INTEGER},
+                #{privilegeSignIn,jdbcType=INTEGER}, #{privilegeComment,jdbcType=INTEGER},
+                #{privilegePromotion,jdbcType=INTEGER},
+                #{privilegeMemberPrice,jdbcType=INTEGER}, #{privilegeBirthday,jdbcType=INTEGER},
+                #{note,jdbcType=VARCHAR}, #{defaultStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMemberLevel" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member_level
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="growthPoint != null">
+                growth_point,
+            </if>
+            <if test="freeFreightPoint != null">
+                free_freight_point,
+            </if>
+            <if test="commentGrowthPoint != null">
+                comment_growth_point,
+            </if>
+            <if test="privilegeFreeFreight != null">
+                privilege_free_freight,
+            </if>
+            <if test="privilegeSignIn != null">
+                privilege_sign_in,
+            </if>
+            <if test="privilegeComment != null">
+                privilege_comment,
+            </if>
+            <if test="privilegePromotion != null">
+                privilege_promotion,
+            </if>
+            <if test="privilegeMemberPrice != null">
+                privilege_member_price,
+            </if>
+            <if test="privilegeBirthday != null">
+                privilege_birthday,
+            </if>
+            <if test="note != null and note != ''">
+                note,
+            </if>
+            <if test="defaultStatus != null">
+                default_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="growthPoint != null">
+                #{growthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="freeFreightPoint != null">
+                #{freeFreightPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="commentGrowthPoint != null">
+                #{commentGrowthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeFreeFreight != null">
+                #{privilegeFreeFreight,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeSignIn != null">
+                #{privilegeSignIn,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeComment != null">
+                #{privilegeComment,jdbcType=INTEGER},
+            </if>
+            <if test="privilegePromotion != null">
+                #{privilegePromotion,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeMemberPrice != null">
+                #{privilegeMemberPrice,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeBirthday != null">
+                #{privilegeBirthday,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultStatus != null">
+                #{defaultStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMemberLevel">
+        <!--@mbg.generated-->
+        update ums_member_level
+        <set>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="growthPoint != null">
+                growth_point = #{growthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="freeFreightPoint != null">
+                free_freight_point = #{freeFreightPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="commentGrowthPoint != null">
+                comment_growth_point = #{commentGrowthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeFreeFreight != null">
+                privilege_free_freight = #{privilegeFreeFreight,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeSignIn != null">
+                privilege_sign_in = #{privilegeSignIn,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeComment != null">
+                privilege_comment = #{privilegeComment,jdbcType=INTEGER},
+            </if>
+            <if test="privilegePromotion != null">
+                privilege_promotion = #{privilegePromotion,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeMemberPrice != null">
+                privilege_member_price = #{privilegeMemberPrice,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeBirthday != null">
+                privilege_birthday = #{privilegeBirthday,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultStatus != null">
+                default_status = #{defaultStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMemberLevel">
+        <!--@mbg.generated-->
+        update ums_member_level
+        set `name`                 = #{name,jdbcType=VARCHAR},
+            growth_point           = #{growthPoint,jdbcType=INTEGER},
+            free_freight_point     = #{freeFreightPoint,jdbcType=DECIMAL},
+            comment_growth_point   = #{commentGrowthPoint,jdbcType=INTEGER},
+            privilege_free_freight = #{privilegeFreeFreight,jdbcType=INTEGER},
+            privilege_sign_in      = #{privilegeSignIn,jdbcType=INTEGER},
+            privilege_comment      = #{privilegeComment,jdbcType=INTEGER},
+            privilege_promotion    = #{privilegePromotion,jdbcType=INTEGER},
+            privilege_member_price = #{privilegeMemberPrice,jdbcType=INTEGER},
+            privilege_birthday     = #{privilegeBirthday,jdbcType=INTEGER},
+            note                   = #{note,jdbcType=VARCHAR},
+            default_status         = #{defaultStatus,jdbcType=INTEGER},
+            create_time            = #{createTime,jdbcType=TIMESTAMP},
+            update_time            = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update ums_member_level
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="growth_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.growthPoint,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="free_freight_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.freeFreightPoint,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="comment_growth_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.commentGrowthPoint,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="privilege_free_freight = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeFreeFreight,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="privilege_sign_in = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeSignIn,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="privilege_comment = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeComment,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="privilege_promotion = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.privilegePromotion,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="privilege_member_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeMemberPrice,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="privilege_birthday = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeBirthday,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.note,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="default_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.defaultStatus,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update ums_member_level
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.name != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="growth_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.growthPoint != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.growthPoint,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="free_freight_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.freeFreightPoint != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.freeFreightPoint,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="comment_growth_point = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.commentGrowthPoint != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.commentGrowthPoint,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="privilege_free_freight = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.privilegeFreeFreight != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeFreeFreight,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="privilege_sign_in = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.privilegeSignIn != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeSignIn,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="privilege_comment = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.privilegeComment != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeComment,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="privilege_promotion = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.privilegePromotion != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.privilegePromotion,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="privilege_member_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.privilegeMemberPrice != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeMemberPrice,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="privilege_birthday = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.privilegeBirthday != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.privilegeBirthday,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="note = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.note != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.note,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="default_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.defaultStatus != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.defaultStatus,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member_level
+                (`name`, growth_point, free_freight_point, comment_growth_point, privilege_free_freight,
+                 privilege_sign_in, privilege_comment, privilege_promotion, privilege_member_price,
+                 privilege_birthday, note, default_status, create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name,jdbcType=VARCHAR}, #{item.growthPoint,jdbcType=INTEGER},
+             #{item.freeFreightPoint,jdbcType=DECIMAL},
+             #{item.commentGrowthPoint,jdbcType=INTEGER}, #{item.privilegeFreeFreight,jdbcType=INTEGER},
+             #{item.privilegeSignIn,jdbcType=INTEGER}, #{item.privilegeComment,jdbcType=INTEGER},
+             #{item.privilegePromotion,jdbcType=INTEGER}, #{item.privilegeMemberPrice,jdbcType=INTEGER},
+             #{item.privilegeBirthday,jdbcType=INTEGER}, #{item.note,jdbcType=VARCHAR},
+             #{item.defaultStatus,jdbcType=INTEGER},
+             #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMemberLevel" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member_level
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            `name`,
+            growth_point,
+            free_freight_point,
+            comment_growth_point,
+            privilege_free_freight,
+            privilege_sign_in,
+            privilege_comment,
+            privilege_promotion,
+            privilege_member_price,
+            privilege_birthday,
+            note,
+            default_status,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{name,jdbcType=VARCHAR},
+            #{growthPoint,jdbcType=INTEGER},
+            #{freeFreightPoint,jdbcType=DECIMAL},
+            #{commentGrowthPoint,jdbcType=INTEGER},
+            #{privilegeFreeFreight,jdbcType=INTEGER},
+            #{privilegeSignIn,jdbcType=INTEGER},
+            #{privilegeComment,jdbcType=INTEGER},
+            #{privilegePromotion,jdbcType=INTEGER},
+            #{privilegeMemberPrice,jdbcType=INTEGER},
+            #{privilegeBirthday,jdbcType=INTEGER},
+            #{note,jdbcType=VARCHAR},
+            #{defaultStatus,jdbcType=INTEGER},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            `name`                 = #{name,jdbcType=VARCHAR},
+            growth_point           = #{growthPoint,jdbcType=INTEGER},
+            free_freight_point     = #{freeFreightPoint,jdbcType=DECIMAL},
+            comment_growth_point   = #{commentGrowthPoint,jdbcType=INTEGER},
+            privilege_free_freight = #{privilegeFreeFreight,jdbcType=INTEGER},
+            privilege_sign_in      = #{privilegeSignIn,jdbcType=INTEGER},
+            privilege_comment      = #{privilegeComment,jdbcType=INTEGER},
+            privilege_promotion    = #{privilegePromotion,jdbcType=INTEGER},
+            privilege_member_price = #{privilegeMemberPrice,jdbcType=INTEGER},
+            privilege_birthday     = #{privilegeBirthday,jdbcType=INTEGER},
+            note                   = #{note,jdbcType=VARCHAR},
+            default_status         = #{defaultStatus,jdbcType=INTEGER},
+            create_time            = #{createTime,jdbcType=TIMESTAMP},
+            update_time            = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.ums.UmsMemberLevel" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_member_level
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="growthPoint != null">
+                growth_point,
+            </if>
+            <if test="freeFreightPoint != null">
+                free_freight_point,
+            </if>
+            <if test="commentGrowthPoint != null">
+                comment_growth_point,
+            </if>
+            <if test="privilegeFreeFreight != null">
+                privilege_free_freight,
+            </if>
+            <if test="privilegeSignIn != null">
+                privilege_sign_in,
+            </if>
+            <if test="privilegeComment != null">
+                privilege_comment,
+            </if>
+            <if test="privilegePromotion != null">
+                privilege_promotion,
+            </if>
+            <if test="privilegeMemberPrice != null">
+                privilege_member_price,
+            </if>
+            <if test="privilegeBirthday != null">
+                privilege_birthday,
+            </if>
+            <if test="note != null and note != ''">
+                note,
+            </if>
+            <if test="defaultStatus != null">
+                default_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="growthPoint != null">
+                #{growthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="freeFreightPoint != null">
+                #{freeFreightPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="commentGrowthPoint != null">
+                #{commentGrowthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeFreeFreight != null">
+                #{privilegeFreeFreight,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeSignIn != null">
+                #{privilegeSignIn,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeComment != null">
+                #{privilegeComment,jdbcType=INTEGER},
+            </if>
+            <if test="privilegePromotion != null">
+                #{privilegePromotion,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeMemberPrice != null">
+                #{privilegeMemberPrice,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeBirthday != null">
+                #{privilegeBirthday,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultStatus != null">
+                #{defaultStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="growthPoint != null">
+                growth_point = #{growthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="freeFreightPoint != null">
+                free_freight_point = #{freeFreightPoint,jdbcType=DECIMAL},
+            </if>
+            <if test="commentGrowthPoint != null">
+                comment_growth_point = #{commentGrowthPoint,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeFreeFreight != null">
+                privilege_free_freight = #{privilegeFreeFreight,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeSignIn != null">
+                privilege_sign_in = #{privilegeSignIn,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeComment != null">
+                privilege_comment = #{privilegeComment,jdbcType=INTEGER},
+            </if>
+            <if test="privilegePromotion != null">
+                privilege_promotion = #{privilegePromotion,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeMemberPrice != null">
+                privilege_member_price = #{privilegeMemberPrice,jdbcType=INTEGER},
+            </if>
+            <if test="privilegeBirthday != null">
+                privilege_birthday = #{privilegeBirthday,jdbcType=INTEGER},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultStatus != null">
+                default_status = #{defaultStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

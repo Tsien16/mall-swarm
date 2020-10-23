@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tsien.mall.mbg.dao.pms.PmsProductCategoryMapper">
+    <resultMap id="BaseResultMap" type="com.tsien.mall.mbg.domain.model.pms.PmsProductCategory">
+        <!--@mbg.generated-->
+        <!--@Table pms_product_category-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="keywords" jdbcType="VARCHAR" property="keywords"/>
+        <result column="description" jdbcType="LONGVARCHAR" property="description"/>
+        <result column="product_count" jdbcType="INTEGER" property="productCount"/>
+        <result column="product_unit" jdbcType="VARCHAR" property="productUnit"/>
+        <result column="nav_status" jdbcType="INTEGER" property="navStatus"/>
+        <result column="show_status" jdbcType="INTEGER" property="showStatus"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, parent_id, `name`, icon, `level`, keywords, description, product_count, product_unit,
+        nav_status, show_status, sort, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from pms_product_category
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from pms_product_category
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsProductCategory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_product_category (parent_id, `name`, icon,
+                                          `level`, keywords, description,
+                                          product_count, product_unit, nav_status,
+                                          show_status, sort, create_time,
+                                          update_time)
+        values (#{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
+                #{level,jdbcType=INTEGER}, #{keywords,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR},
+                #{productCount,jdbcType=INTEGER}, #{productUnit,jdbcType=VARCHAR}, #{navStatus,jdbcType=INTEGER},
+                #{showStatus,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsProductCategory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_product_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="icon != null and icon != ''">
+                icon,
+            </if>
+            <if test="level != null">
+                `level`,
+            </if>
+            <if test="keywords != null and keywords != ''">
+                keywords,
+            </if>
+            <if test="description != null and description != ''">
+                description,
+            </if>
+            <if test="productCount != null">
+                product_count,
+            </if>
+            <if test="productUnit != null and productUnit != ''">
+                product_unit,
+            </if>
+            <if test="navStatus != null">
+                nav_status,
+            </if>
+            <if test="showStatus != null">
+                show_status,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">
+                #{parentId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="keywords != null and keywords != ''">
+                #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null and description != ''">
+                #{description,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="productCount != null">
+                #{productCount,jdbcType=INTEGER},
+            </if>
+            <if test="productUnit != null and productUnit != ''">
+                #{productUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="navStatus != null">
+                #{navStatus,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsProductCategory">
+        <!--@mbg.generated-->
+        update pms_product_category
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                `level` = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="keywords != null and keywords != ''">
+                keywords = #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="productCount != null">
+                product_count = #{productCount,jdbcType=INTEGER},
+            </if>
+            <if test="productUnit != null and productUnit != ''">
+                product_unit = #{productUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="navStatus != null">
+                nav_status = #{navStatus,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                show_status = #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tsien.mall.mbg.domain.model.pms.PmsProductCategory">
+        <!--@mbg.generated-->
+        update pms_product_category
+        set parent_id     = #{parentId,jdbcType=BIGINT},
+            `name`        = #{name,jdbcType=VARCHAR},
+            icon          = #{icon,jdbcType=VARCHAR},
+            `level`       = #{level,jdbcType=INTEGER},
+            keywords      = #{keywords,jdbcType=VARCHAR},
+            description   = #{description,jdbcType=LONGVARCHAR},
+            product_count = #{productCount,jdbcType=INTEGER},
+            product_unit  = #{productUnit,jdbcType=VARCHAR},
+            nav_status    = #{navStatus,jdbcType=INTEGER},
+            show_status   = #{showStatus,jdbcType=INTEGER},
+            sort          = #{sort,jdbcType=INTEGER},
+            create_time   = #{createTime,jdbcType=TIMESTAMP},
+            update_time   = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_product_category
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="parent_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.parentId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="icon = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.icon,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`level` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.level,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="keywords = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.keywords,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="description = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.description,jdbcType=LONGVARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="product_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.productCount,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="product_unit = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.productUnit,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="nav_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.navStatus,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="show_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.showStatus,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="sort = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.sort,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update pms_product_category
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="parent_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.parentId != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.parentId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.name != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="icon = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.icon != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.icon,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`level` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.level != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.level,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="keywords = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.keywords != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.keywords,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="description = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.description != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.description,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="product_count = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productCount != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.productCount,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="product_unit = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productUnit != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.productUnit,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="nav_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.navStatus != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.navStatus,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="show_status = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.showStatus != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.showStatus,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="sort = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.sort != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.sort,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="create_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="update_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.updateTime != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_product_category
+                (parent_id, `name`, icon, `level`, keywords, description, product_count, product_unit,
+                 nav_status, show_status, sort, create_time, update_time)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.parentId,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.icon,jdbcType=VARCHAR},
+             #{item.level,jdbcType=INTEGER}, #{item.keywords,jdbcType=VARCHAR},
+             #{item.description,jdbcType=LONGVARCHAR},
+             #{item.productCount,jdbcType=INTEGER}, #{item.productUnit,jdbcType=VARCHAR},
+             #{item.navStatus,jdbcType=INTEGER},
+             #{item.showStatus,jdbcType=INTEGER}, #{item.sort,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP},
+             #{item.updateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsProductCategory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_product_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            parent_id,
+            `name`,
+            icon,
+            `level`,
+            keywords,
+            description,
+            product_count,
+            product_unit,
+            nav_status,
+            show_status,
+            sort,
+            create_time,
+            update_time,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            #{parentId,jdbcType=BIGINT},
+            #{name,jdbcType=VARCHAR},
+            #{icon,jdbcType=VARCHAR},
+            #{level,jdbcType=INTEGER},
+            #{keywords,jdbcType=VARCHAR},
+            #{description,jdbcType=LONGVARCHAR},
+            #{productCount,jdbcType=INTEGER},
+            #{productUnit,jdbcType=VARCHAR},
+            #{navStatus,jdbcType=INTEGER},
+            #{showStatus,jdbcType=INTEGER},
+            #{sort,jdbcType=INTEGER},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            parent_id     = #{parentId,jdbcType=BIGINT},
+            `name`        = #{name,jdbcType=VARCHAR},
+            icon          = #{icon,jdbcType=VARCHAR},
+            `level`       = #{level,jdbcType=INTEGER},
+            keywords      = #{keywords,jdbcType=VARCHAR},
+            description   = #{description,jdbcType=LONGVARCHAR},
+            product_count = #{productCount,jdbcType=INTEGER},
+            product_unit  = #{productUnit,jdbcType=VARCHAR},
+            nav_status    = #{navStatus,jdbcType=INTEGER},
+            show_status   = #{showStatus,jdbcType=INTEGER},
+            sort          = #{sort,jdbcType=INTEGER},
+            create_time   = #{createTime,jdbcType=TIMESTAMP},
+            update_time   = #{updateTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+    <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.tsien.mall.mbg.domain.model.pms.PmsProductCategory" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into pms_product_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="name != null and name != ''">
+                `name`,
+            </if>
+            <if test="icon != null and icon != ''">
+                icon,
+            </if>
+            <if test="level != null">
+                `level`,
+            </if>
+            <if test="keywords != null and keywords != ''">
+                keywords,
+            </if>
+            <if test="description != null and description != ''">
+                description,
+            </if>
+            <if test="productCount != null">
+                product_count,
+            </if>
+            <if test="productUnit != null and productUnit != ''">
+                product_unit,
+            </if>
+            <if test="navStatus != null">
+                nav_status,
+            </if>
+            <if test="showStatus != null">
+                show_status,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="keywords != null and keywords != ''">
+                #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null and description != ''">
+                #{description,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="productCount != null">
+                #{productCount,jdbcType=INTEGER},
+            </if>
+            <if test="productUnit != null and productUnit != ''">
+                #{productUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="navStatus != null">
+                #{navStatus,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != ''">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                `level` = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="keywords != null and keywords != ''">
+                keywords = #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="productCount != null">
+                product_count = #{productCount,jdbcType=INTEGER},
+            </if>
+            <if test="productUnit != null and productUnit != ''">
+                product_unit = #{productUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="navStatus != null">
+                nav_status = #{navStatus,jdbcType=INTEGER},
+            </if>
+            <if test="showStatus != null">
+                show_status = #{showStatus,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>
